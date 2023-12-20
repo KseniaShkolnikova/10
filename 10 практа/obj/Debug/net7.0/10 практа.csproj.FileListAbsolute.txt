@@ -1,0 +1,17 @@
+C:\Users\user1\source\repos\10 практа\10 практа\bin\Debug\net7.0\10 практа.exe
+C:\Users\user1\source\repos\10 практа\10 практа\bin\Debug\net7.0\10 практа.deps.json
+C:\Users\user1\source\repos\10 практа\10 практа\bin\Debug\net7.0\10 практа.runtimeconfig.json
+C:\Users\user1\source\repos\10 практа\10 практа\bin\Debug\net7.0\10 практа.dll
+C:\Users\user1\source\repos\10 практа\10 практа\bin\Debug\net7.0\10 практа.pdb
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.AssemblyInfoInputs.cache
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.AssemblyInfo.cs
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.csproj.CoreCompileInputs.cache
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.dll
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\refint\10 практа.dll
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.pdb
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.genruntimeconfig.cache
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\ref\10 практа.dll
+C:\Users\user1\source\repos\10 практа\10 практа\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.csproj.AssemblyReference.cache
+C:\Users\user1\source\repos\10 практа\10 практа\obj\Debug\net7.0\10 практа.csproj.CopyComplete
