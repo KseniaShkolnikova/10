@@ -10,13 +10,14 @@ namespace _10_практа
     internal class kassir
     {
         public kassiri Vibor = new kassiri();
+        public List<kassiri> kassirq = new List<kassiri>();
         public void Read(string hh,int position, string login,string roli)
         {
-            List<kassiri> kassir = SerilDesir.Desir<List<kassiri>>(hh) ?? new List<kassiri>();
             int sd = position - 3;
             hh = "kassir.json";
             while (position != (int)Enum.Escape)
             {
+                List<kassiri> kassir= SerilDesir.Desir<List<kassiri>>(hh) ?? new List<kassiri>();
                 Console.Clear();
                 Console.SetCursorPosition(48, 0);
                 Console.WriteLine($"Добро пожаловать {login}!                              Роль:{roli}");
@@ -57,17 +58,20 @@ namespace _10_практа
                         skladik[sd].colvovsklad = skladik[sd].colvovsklad - 1;
                         kassir[sd].pokupkolvo++;
                     }
-                    SerilDesir.Serialize(skladik, hh);
+                    kassir[sd].nazvpokup = skladik[sd].name;
+                    skladik[sd].nasklad = skladik[sd].colvovsklad;
                     kassir[sd].cumaitog = kassir[sd].pokupkolvo * kassir[sd].cena;
                     hh = "kassir.json";
+                    kassirq.Add(kassir[sd]);
                     SerilDesir.Serialize(kassir, hh);
                 }
-                else
+                else if (skladik[sd].colvovsklad==0)
                 {
                     Console.SetCursorPosition(97, 6);
                     Console.WriteLine("Этого товара нет");
                 }
             }
+            
         }
         public void kassirs(string login, string roli)
         {
@@ -125,15 +129,23 @@ namespace _10_практа
                     List<kassiri> Vibor12 = SerilDesir.Desir<List<kassiri>>(hh) ?? new List<kassiri>();
                     for ( i = 0; i < skladda.Count; i++)
                     {
-                        Console.SetCursorPosition(5, i + 3);
-                        Console.WriteLine(Vibor12[i].id);
-                        Console.SetCursorPosition(19, i + 3);
-                        Console.WriteLine(Vibor12[i].name);
-                        Console.SetCursorPosition(39, i + 3);
-                        Console.WriteLine(Vibor12[i].cena);
-                        Console.SetCursorPosition(67, i + 3);
-                        Console.WriteLine(Vibor12[i].pokupkolvo);
-                        kk = Vibor12[i].cumaitog +kk;
+                        if (Vibor12[i].colvovsklad != 0)
+                        {
+                            Console.SetCursorPosition(5, i + 3);
+                            Console.WriteLine(Vibor12[i].id);
+                            Console.SetCursorPosition(19, i + 3);
+                            Console.WriteLine(Vibor12[i].name);
+                            Console.SetCursorPosition(39, i + 3);
+                            Console.WriteLine(Vibor12[i].cena);
+                            Console.SetCursorPosition(67, i + 3);
+                            Console.WriteLine(Vibor12[i].pokupkolvo);
+                            kk = Vibor12[i].cumaitog +kk;
+                        }
+                        else
+                        {
+                            Console.SetCursorPosition(3, i + 3);
+                            Console.WriteLine("Товара нет");
+                        }
                     }
                     for (int j = 0; j < 94; j++)
                     {
@@ -171,13 +183,22 @@ namespace _10_практа
                 {
                     hh = "buxa.json";
                     List<Buxgalter> buxdes = SerilDesir.Desir<List<Buxgalter>>(hh) ?? new List<Buxgalter>();
-                    Buxgalter buxgalter = new Buxgalter();
-                    buxgalter.cuma = kk;
-                    buxgalter.pribavka = true;
-                    buxgalter.name ="Покупка" ;
-                    buxgalter.vrema = DateTime.Now;
-                    buxdes.Add(buxgalter);
+                    Buxgalter buxgalter1 = new Buxgalter();
+                    for (i = 0; i < kassirq.Count; i++)
+                    {
+                        buxgalter1.cuma = kassirq[i].cena;
+                        buxgalter1.pribavka = true;
+                        buxgalter1.name = kassirq[i].name;
+                        buxgalter1.vrema = DateTime.Now;
+                        buxdes.Add(buxgalter1);
+                    }
                     SerilDesir.Serialize(buxdes,hh);
+                    List<Sklad> skl = SerilDesir.Desir<List<Sklad>>(hh) ?? new List<Sklad>();
+                    for (i =0; i < skl.Count; i++)
+                    {
+                        skl[i].colvovsklad = skl[i].nasklad;
+                    }
+                    SerilDesir.Serialize(skl, "sklad.json");
                     Console.Clear();
                     Console.SetCursorPosition(48, 0);
                     Console.WriteLine($"Добро пожаловать {login}!                              Роль:{roli}");

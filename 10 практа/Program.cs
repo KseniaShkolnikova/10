@@ -124,73 +124,83 @@
                 }
                 class3.porol = porol;
                 string hh = "admin.json";
-                class3.rol = 0;// -- Чтобы создать админа
                 porollog.Add(class3);
                 bool equal = false;
                 bool equal1 = false;
                 int rolis=100;
-                SerilDesir.Serialize(porollog, hh);// -- Создать админа
-                //var proverk = SerilDesir.Desir<List<Porol>>(hh);
-                //string id = "";
-                //for (int i = 0; i < proverk.Count; i++)
-                //{
-                //    foreach (var item in proverk)
-                //    {
-                //        if (item.porol == class3.porol)
-                //        {
-                //            equal = true;
-                //            if (item.login == class3.login)
-                //            {
-                //                equal1 = true;
-                //                rolis = item.rol;
-                //                id = item.id;
+                try
+                {
+                    var proverk = SerilDesir.Desir<List<Porol>>(hh);
+                    string id = "";
+                    for (int i = 0; i < proverk.Count; i++)
+                    {
+                        foreach (var item in proverk)
+                        {
+                            if (item.porol == class3.porol)
+                            {
+                                equal = true;
+                                if (item.login == class3.login)
+                                {
+                                    equal1 = true;
+                                    rolis = item.rol;
+                                    id = item.id;
 
-                //            }
-                //        }
-                //    }
-                //}
-                //hh = "kadrovik.json";
-                //var poick = SerilDesir.Desir<List<Kladmen>>(hh) ?? new List<Kladmen>();
-                //foreach (var item in poick)
-                //{
-                //    if (item.akk == id)
-                //    {
-                //        class3.login = item.name;
-                //    }
-                //}
-                //if (equal == true & equal1 == true)
-                //{
-                //    if ( rolis == 0)
-                //    {
-                //        Admin admin = new Admin();
-                //        admin.admin(class3.login, roli[0]);
-                //    }
-                //    else if ( rolis == 1)
-                //    {
-                //        kassir kasa = new kassir();
-                //        kasa.kassirs(class3.login, roli[1]);
-                //    }
-                //    else if (rolis == 2)
-                //    {
-                //        Kadrovik klad = new Kadrovik();
-                //        klad.kladmen(class3.login, roli[2]);
-                //    }
-                //    else if (rolis == 3)
-                //    {
-                //        skladik skladi = new skladik();
-                //        skladi.sklad(class3.login, roli[3]);
-                //    }
-                //    else if (rolis == 4)
-                //    {
-                //        Buxgalteryo bux = new Buxgalteryo();
-                //        bux.Buxa(class3.login, roli[4]);
-                //    }
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Неправильный логин или пороль. Попробуйте еще раз.");
-                //    Thread.Sleep(1000);
-                //}
+                                }
+                            }
+                        }
+                    }
+                    hh = "kadrovik.json";
+                    var poick = SerilDesir.Desir<List<Kladmen>>(hh) ?? new List<Kladmen>();
+                    foreach (var item in poick)
+                    {
+                        if (item.akk == id)
+                        {
+                            class3.login = item.name;
+                        }
+                    }
+                    if (equal != true & equal1 != true)
+                    {
+                        Console.WriteLine("Неправильный логин или пороль. Попробуйте еще раз.");
+                        Thread.Sleep(1000);
+                    }
+
+                }
+                catch
+                {
+                    class3.rol = 0;// -- Чтобы создать админа   
+                    rolis = 0;
+                    SerilDesir.Serialize(porollog, hh);// -- Создать админа
+                }
+                finally
+                {
+
+                    if (rolis == 0)
+                    {
+                        Admin admin = new Admin();
+                        admin.admin(class3.login, roli[0]);
+                    }
+                    else if (rolis == 1)
+                    {
+                        kassir kasa = new kassir();
+                        kasa.kassirs(class3.login, roli[1]);
+                    }
+                    else if (rolis == 2)
+                    {
+                        Kadrovik klad = new Kadrovik();
+                        klad.kladmen(class3.login, roli[2]);
+                    }
+                    else if (rolis == 3)
+                    {
+                        skladik skladi = new skladik();
+                        skladi.sklad(class3.login, roli[3]);
+                    }
+                    else if (rolis == 4)
+                    {
+                        Buxgalteryo bux = new Buxgalteryo();
+                        bux.Buxa(class3.login, roli[4]);
+                    }
+                }
+                
             }
 
         }

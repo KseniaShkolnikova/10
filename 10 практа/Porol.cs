@@ -31,6 +31,7 @@ namespace _10_практа
         public string name;
         public double cena;
         public int colvovsklad;
+        public int nasklad;
     }
     public class Buxgalter
     {
@@ -45,6 +46,7 @@ namespace _10_практа
     {
         public int pokupkolvo;
         public double cumaitog;
+        public string nazvpokup;
     }
 }
 

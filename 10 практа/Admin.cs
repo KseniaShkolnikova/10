@@ -108,7 +108,7 @@ namespace _10_практа
                             {
                                 Console.SetCursorPosition(8, 5);
                                 Console.WriteLine("Внимательнее ознакомтесь со списком ролей");
-                                Thread.Sleep(3000);
+                                Thread.Sleep(1500);
                             }
                         }
                         break;
